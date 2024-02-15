@@ -14,6 +14,9 @@ export default function Board() {
     if (!guesses.includes(guess)) {
       setScore(score + 1);
       setGuesses([...guesses, guess]);
+    } else {
+      setScore(0);
+      setGuesses([]);
     }
   };
 
