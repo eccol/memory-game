@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "./Card.jsx";
+import { shuffleArray } from "../helpers/shuffle.js";
 
 const NUMBER_OF_CARDS = 12;
 
@@ -20,6 +21,7 @@ export default function Board() {
   for (let i = 0; i < NUMBER_OF_CARDS; i++) {
     cards.push(<Card key={i} id={i} clickEvent={clickEvent} />);
   }
+  shuffleArray(cards);
 
   return (
     <div className="board">
