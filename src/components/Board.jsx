@@ -6,6 +6,7 @@ const NUMBER_OF_CARDS = 12;
 
 export default function Board() {
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [guesses, setGuesses] = useState([]);
 
   const clickEvent = (e) => {
@@ -14,6 +15,9 @@ export default function Board() {
     if (!guesses.includes(guess)) {
       setScore(score + 1);
       setGuesses([...guesses, guess]);
+      if (score + 1 > highScore) {
+        setHighScore(score + 1);
+      }
     } else {
       setScore(0);
       setGuesses([]);
@@ -28,7 +32,8 @@ export default function Board() {
 
   return (
     <div className="board">
-      <p>{score}</p>
+      <p>Score: {score}</p>
+      <p>High Score: {highScore}</p>
       <h1>Board</h1>
       {cards}
     </div>
